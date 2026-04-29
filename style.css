@@ -13,20 +13,15 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== FONDO PRO ===== */
+/* ===== FONDO ===== */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-
   background-image: url("images/portada/portada.png");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
-
-  filter: blur(0.1px) brightness(0.75);
-  transform: scale(1.05);
-
+  filter: brightness(0.75);
   z-index: -3;
 }
 
@@ -34,10 +29,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: linear-gradient(
-    rgba(245,240,230,0.60),
-    rgba(245,240,230,0.75)
-  );
+  background: rgba(245,240,230,0.7);
   z-index: -2;
 }
 
@@ -52,36 +44,47 @@ header {
   text-align: center;
   padding: 28px 45px;
   border-radius: 22px;
-
   backdrop-filter: blur(16px);
   background: rgba(255,255,255,0.22);
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-  border: 1px solid rgba(255,255,255,0.35);
 }
 
 header h1 {
   font-size: 52px;
-  font-weight: 500;
   letter-spacing: 3px;
-
-  background: linear-gradient(90deg, #3b2f2a, #d8a1ad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 header p {
   margin-top: 10px;
-  font-size: 15px;
   color: #b07d88;
-  letter-spacing: 1px;
-  font-style: italic;
 }
 
-/* ===== MAIN ===== */
-main {
-  max-width: 1400px;
-  margin: auto;
+/* ===== FILTRO ===== */
+.filtro-container {
+  text-align: center;
+  margin: 20px;
+}
+
+#filtro {
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  background: #d8a1ad;
+  color: white;
+}
+
+/* ===== MES HEADER (ARREGLADO) ===== */
+.mes-header {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 10px;
+}
+
+.mes-header h2 {
+  background: rgba(255,255,255,0.3);
+  padding: 15px 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 /* ===== GALERÍA ===== */
@@ -94,19 +97,8 @@ main {
 
 /* ===== CARD ===== */
 .card {
-  position: relative;
   border-radius: 20px;
   overflow: hidden;
-
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-
-  transition: all 0.6s cubic-bezier(.2,.8,.2,1);
-}
-
-.card.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
 /* ===== IMAGEN ===== */
@@ -114,33 +106,15 @@ main {
   width: 100%;
   height: 230px;
   object-fit: cover;
-  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.5s ease;
-}
 
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.25), transparent 60%);
-  opacity: 0;
-  transition: 0.3s ease;
-  pointer-events: none;
+  /* 🔥 solo zoom leve, sin “levantarse” */
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .card:hover img {
-  transform: scale(1.06);
-  filter: brightness(1.08);
-}
-
-.card:hover::after {
-  opacity: 1;
-}
-
-.gallery:hover .card:not(:hover) {
-  transform: scale(0.97);
-  filter: brightness(0.85);
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 /* ===== LIGHTBOX ===== */
@@ -150,15 +124,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background: rgba(0,0,0,0.88);
-  backdrop-filter: blur(8px);
-
+  background: rgba(0,0,0,0.9);
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s ease;
-
-  z-index: 999;
+  transition: 0.3s;
 }
 
 .lightbox.active {
@@ -166,22 +135,10 @@ main {
   visibility: visible;
 }
 
-/* 🔥 ANIMACIÓN IMAGEN */
 .lightbox-img {
   max-width: 90%;
   max-height: 85%;
   border-radius: 16px;
-
-  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-
-  transform: scale(1);
-  opacity: 1;
-
-  transition: all 0.3s ease;
-}
-
-.lightbox.active .lightbox-img {
-  transform: scale(1);
 }
 
 /* cerrar */
@@ -192,47 +149,24 @@ main {
   font-size: 40px;
   color: white;
   cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.close:hover {
-  transform: scale(1.2);
 }
 
 /* ===== FLECHAS ===== */
 .prev, .next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   font-size: 40px;
   color: white;
   cursor: pointer;
-  padding: 12px;
-  transition: 0.3s ease;
-}
-
-.prev:hover, .next:hover {
-  transform: translateY(-50%) scale(1.2);
+  transform: translateY(-50%);
 }
 
 .prev { left: 20px; }
 .next { right: 20px; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 600px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 15px;
   }
-
-  header h1 { font-size: 36px; }
-  header p { font-size: 13px; }
-  .header-content { padding: 18px 22px; }
 }

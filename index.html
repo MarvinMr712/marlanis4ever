@@ -5,47 +5,68 @@
   <title>Marlanis</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <link rel="icon" type="image/png" href="icons/icono.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
-    <div class="header-content">
-      <h1>Marlanis</h1>
-      <p>Donde tú y yo se volvieron nosotros.</p>
+<header>
+  <div class="header-content">
+    <h1>Marlanis</h1>
+    <p>"Donde tú y yo nos convertimos en nosotros"</p>
+  </div>
+</header>
+
+<!-- FILTRO -->
+<div class="filtro-container">
+  <select id="filtro">
+    <option value="all">Todo</option>
+    <option value="2026-04">Abril 2026</option>
+    <option value="2026-03">Marzo 2026</option>
+  </select>
+</div>
+
+<main>
+
+  <!-- ABRIL -->
+  <section class="mes" data-fecha="2026-04">
+
+    <div class="mes-header">
+      <h2>Abril 2026</h2>
     </div>
-  </header>
 
-  <main>
-    <section class="gallery" id="gallery">
-
+    <div class="gallery">
       <div class="card"><img src="images/fotos/foto1.png"></div>
       <div class="card"><img src="images/fotos/foto2.png"></div>
+    </div>
+
+  </section>
+
+  <!-- MARZO -->
+  <section class="mes" data-fecha="2026-03">
+
+    <div class="mes-header">
+      <h2>Marzo 2026</h2>
+    </div>
+
+    <div class="gallery">
       <div class="card"><img src="images/fotos/foto3.png"></div>
       <div class="card"><img src="images/fotos/foto4.png"></div>
-      <div class="card"><img src="images/fotos/foto5.png"></div>
-      <div class="card"><img src="images/fotos/foto6.png"></div>
-      <div class="card"><img src="images/fotos/foto7.png"></div>
-      <div class="card"><img src="images/fotos/foto8.png"></div>
+    </div>
 
-    </section>
-  </main>
+  </section>
 
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox">
-    <span class="close">&times;</span>
+</main>
 
-    <!-- FLECHAS -->
-    <span class="prev">&#10094;</span>
-    <span class="next">&#10095;</span>
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <span class="prev">&#10094;</span>
+  <span class="next">&#10095;</span>
+  <img class="lightbox-img" id="lightbox-img">
+</div>
 
-    <img class="lightbox-img" id="lightbox-img">
-  </div>
-
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
