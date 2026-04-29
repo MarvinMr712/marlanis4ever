@@ -72,7 +72,7 @@ header p {
   color: white;
 }
 
-/* ===== MES HEADER (ARREGLADO) ===== */
+/* ===== MES HEADER ===== */
 .mes-header {
   display: flex;
   justify-content: center;
@@ -107,8 +107,6 @@ header p {
   height: 230px;
   object-fit: cover;
   cursor: pointer;
-
-  /* 🔥 solo zoom leve, sin “levantarse” */
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
@@ -141,7 +139,6 @@ header p {
   border-radius: 16px;
 }
 
-/* cerrar */
 .close {
   position: absolute;
   top: 25px;
@@ -151,7 +148,6 @@ header p {
   cursor: pointer;
 }
 
-/* ===== FLECHAS ===== */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -165,8 +161,49 @@ header p {
 .next { right: 20px; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
   .gallery {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 🔥 CELULAR MEJORADO */
+@media (max-width: 600px) {
+
+  /* TITULO MÁS GRANDE */
+  header h1 {
+    font-size: 44px;
+  }
+
+  header p {
+    font-size: 14px;
+  }
+
+  .header-content {
+    padding: 35px 25px;
+  }
+
+  /* FILTRO MÁS GRANDE */
+  #filtro {
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+
+  /* MES MÁS VISIBLE */
+  .mes-header h2 {
+    font-size: 18px;
+    padding: 14px 22px;
+  }
+
+  /* 🔥 3 FOTOS POR FILA EN CELULAR */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 12px;
+  }
+
+  /* IMAGENES MÁS PEQUEÑAS PERO LIMPIAS */
+  .card img {
+    height: 120px;
   }
 }
