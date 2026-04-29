@@ -1,0 +1,251 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  color: #3b2f2a;
+  overflow-x: hidden;
+}
+
+/* ===== FONDO PRO ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("images/portada/portada.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  filter: blur(0.1px) brightness(0.75);
+  transform: scale(1.05);
+
+  z-index: -3;
+}
+
+/* capa cálida */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    rgba(245,240,230,0.60),
+    rgba(245,240,230,0.75)
+  );
+  z-index: -2;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: center;
+  padding: 70px 20px 30px;
+}
+
+.header-content {
+  text-align: center;
+  padding: 28px 45px;
+  border-radius: 22px;
+
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.22);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* TITULO */
+header h1 {
+  font-size: 52px;
+  font-weight: 500;
+  letter-spacing: 3px;
+
+  background: linear-gradient(90deg, #3b2f2a, #d8a1ad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FRASE */
+header p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #b07d88;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* ===== MAIN ===== */
+main {
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* ===== GALERÍA ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  padding: 30px;
+}
+
+/* ===== CARD ===== */
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+
+  transition: all 0.6s cubic-bezier(.2,.8,.2,1);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ===== IMAGEN ===== */
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+}
+
+/* 🔥 FIX IMPORTANTE: evita que el overlay bloquee clicks */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.25),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: 0.3s ease;
+
+  pointer-events: none;
+}
+
+/* hover moderno */
+.card:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.08);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* efecto foco elegante */
+.gallery:hover .card:not(:hover) {
+  transform: scale(0.97);
+  filter: brightness(0.85);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(8px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s ease;
+
+  z-index: 999;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 16px;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+
+  transform: scale(0.9);
+  transition: 0.3s ease;
+}
+
+.lightbox.active .lightbox-img {
+  transform: scale(1);
+}
+
+/* cerrar */
+.close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+
+  font-size: 40px;
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.close:hover {
+  transform: scale(1.2);
+}
+
+/* ===== SCROLL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  header p {
+    font-size: 13px;
+  }
+
+  .header-content {
+    padding: 18px 22px;
+  }
+}
