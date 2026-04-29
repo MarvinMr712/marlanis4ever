@@ -30,7 +30,6 @@ body::before {
   z-index: -3;
 }
 
-/* capa cálida */
 body::after {
   content: "";
   position: fixed;
@@ -58,11 +57,9 @@ header {
   background: rgba(255,255,255,0.22);
 
   box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-
   border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* TITULO */
 header h1 {
   font-size: 52px;
   font-weight: 500;
@@ -73,7 +70,6 @@ header h1 {
   -webkit-text-fill-color: transparent;
 }
 
-/* FRASE */
 header p {
   margin-top: 10px;
   font-size: 15px;
@@ -118,33 +114,21 @@ main {
   width: 100%;
   height: 230px;
   object-fit: cover;
-
   border-radius: 20px;
-
   cursor: pointer;
-
   transition: all 0.5s ease;
 }
 
-/* 🔥 FIX IMPORTANTE: evita que el overlay bloquee clicks */
 .card::after {
   content: "";
   position: absolute;
   inset: 0;
-
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.25),
-    transparent 60%
-  );
-
+  background: linear-gradient(to top, rgba(0,0,0,0.25), transparent 60%);
   opacity: 0;
   transition: 0.3s ease;
-
   pointer-events: none;
 }
 
-/* hover moderno */
 .card:hover img {
   transform: scale(1.06);
   filter: brightness(1.08);
@@ -154,7 +138,6 @@ main {
   opacity: 1;
 }
 
-/* efecto foco elegante */
 .gallery:hover .card:not(:hover) {
   transform: scale(0.97);
   filter: brightness(0.85);
@@ -164,7 +147,6 @@ main {
 .lightbox {
   position: fixed;
   inset: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,7 +156,6 @@ main {
 
   opacity: 0;
   visibility: hidden;
-
   transition: 0.3s ease;
 
   z-index: 999;
@@ -185,6 +166,7 @@ main {
   visibility: visible;
 }
 
+/* 🔥 ANIMACIÓN IMAGEN */
 .lightbox-img {
   max-width: 90%;
   max-height: 85%;
@@ -192,8 +174,10 @@ main {
 
   box-shadow: 0 25px 60px rgba(0,0,0,0.5);
 
-  transform: scale(0.9);
-  transition: 0.3s ease;
+  transform: scale(1);
+  opacity: 1;
+
+  transition: all 0.3s ease;
 }
 
 .lightbox.active .lightbox-img {
@@ -205,12 +189,9 @@ main {
   position: absolute;
   top: 25px;
   right: 35px;
-
   font-size: 40px;
   color: white;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
@@ -218,10 +199,24 @@ main {
   transform: scale(1.2);
 }
 
-/* ===== SCROLL ===== */
-html {
-  scroll-behavior: smooth;
+/* ===== FLECHAS ===== */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  transition: 0.3s ease;
 }
+
+.prev:hover, .next:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
@@ -237,15 +232,7 @@ html {
     padding: 15px;
   }
 
-  header h1 {
-    font-size: 36px;
-  }
-
-  header p {
-    font-size: 13px;
-  }
-
-  .header-content {
-    padding: 18px 22px;
-  }
+  header h1 { font-size: 36px; }
+  header p { font-size: 13px; }
+  .header-content { padding: 18px 22px; }
 }
