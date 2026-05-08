@@ -1,72 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Marlanis</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Marlanis</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="icons/icono.png">
-  <link rel="stylesheet" href="style.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="icons/icono.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Marlanis</h1>
+        <p>"Donde tú y yo nos convertimos en nosotros"</p>
+      </div>
+    </header>
 
-<header>
-  <div class="header-content">
-    <h1>Marlanis</h1>
-    <p>"Donde tú y yo nos convertimos en nosotros"</p>
-  </div>
-</header>
-
-<!-- FILTRO -->
-<div class="filtro-container">
-  <select id="filtro">
-    <option value="all">Todo</option>
-    <option value="2026-04">Abril 2026</option>
-    <option value="2026-03">Marzo 2026</option>
-  </select>
-</div>
-
-<main>
-
-  <!-- ABRIL -->
-  <section class="mes" data-fecha="2026-04">
-
-    <div class="mes-header">
-      <h2>Abril 2026</h2>
+    <!-- FILTRO -->
+    <div class="filtro-container">
+      <select id="filtro">
+        <option value="all">Todo</option>
+        <option value="2026-04">Abril 2026</option>
+        <option value="2026-03">Marzo 2026</option>
+      </select>
     </div>
 
-    <div class="gallery">
-      <div class="card"><img src="images/fotos/foto1.png"></div>
-      <div class="card"><img src="images/fotos/foto2.png"></div>
+    <main>
+      <!-- ABRIL 2026 -->
+      <section class="mes" data-fecha="2026-04">
+        <div class="mes-header">
+          <h2>Abril 2026</h2>
+        </div>
+        <div class="gallery">
+          <div class="card">
+            <img src="images/fotos/foto1.png" alt="Recuerdo Abril 1" />
+          </div>
+          <div class="card">
+            <img src="images/fotos/foto2.png" alt="Recuerdo Abril 2" />
+          </div>
+        </div>
+      </section>
+
+      <!-- MARZO 2026 -->
+      <section class="mes" data-fecha="2026-03">
+        <div class="mes-header">
+          <h2>Marzo 2026</h2>
+        </div>
+        <div class="gallery">
+          <div class="card">
+            <img src="images/fotos/foto3.png" alt="Recuerdo Marzo 1" />
+          </div>
+          <div class="card">
+            <img src="images/fotos/foto4.png" alt="Recuerdo Marzo 2" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <span class="prev">&#10094;</span>
+      <span class="next">&#10095;</span>
+      <img class="lightbox-img" id="lightbox-img" alt="Imagen ampliada" />
     </div>
 
-  </section>
-
-  <!-- MARZO -->
-  <section class="mes" data-fecha="2026-03">
-
-    <div class="mes-header">
-      <h2>Marzo 2026</h2>
-    </div>
-
-    <div class="gallery">
-      <div class="card"><img src="images/fotos/foto3.png"></div>
-      <div class="card"><img src="images/fotos/foto4.png"></div>
-    </div>
-
-  </section>
-
-</main>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <span class="prev">&#10094;</span>
-  <span class="next">&#10095;</span>
-  <img class="lightbox-img" id="lightbox-img">
-</div>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
